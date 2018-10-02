@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import './App.css';
 
 class App extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     user: 'Eli',
-  //   }
-  //   this.handleChange = this.handleChange.bind(this);
-  // }
+
   state = {
     user: { name: 'Eli', city: 'Minneapolis' },
   }
 
-  handleChange = (event) => {
+  handleNameChange = (event) => {
     this.setState({
       user: {
+        ...this.state.user,
         name: event.target.value,
-        city: this.state.user.city
       }
     });
   }
   handleCityChange = (event) => {
     this.setState({
       user: {
+        ...this.state.user,
         city: event.target.value,
-        name: this.state.user.name
       }
     });
   }
@@ -36,10 +29,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header /> */}
         <p>{this.state.user.name}</p>
         <br />
-        <input value={this.state.user.name} onChange={this.handleChange} />
+        <input value={this.state.user.name} onChange={this.handleNameChange} />
         <br />
         <input value={this.state.user.city} onChange={this.handleCityChange} />
         <p>{this.state.user.name} is from {this.state.user.city}</p>
